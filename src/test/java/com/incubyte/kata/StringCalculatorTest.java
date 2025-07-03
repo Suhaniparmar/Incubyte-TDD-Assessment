@@ -14,4 +14,9 @@ public class StringCalculatorTest {
     public void returnSameNumberForSingleValue(){
         assertEquals(1, StringCalculator.add("1"));
     }
+
+    @Test
+    public void returnSumForTwoCommaSeparatedNumbers(){
+        assertEquals(5, StringCalculator.add("2,3"));
+    }
 }
