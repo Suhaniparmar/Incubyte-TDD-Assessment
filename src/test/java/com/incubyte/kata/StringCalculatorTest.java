@@ -59,5 +59,10 @@ public class StringCalculatorTest {
         assertEquals(8, StringCalculator.add("2,1001,6"));
     }
 
+    @Test
+    public void supportMultiCharacterDelimiter() {
+        assertEquals(6, StringCalculator.add("//[***]\n1***2***3"));
+    }
+
 
 }
