@@ -6,7 +6,7 @@ public class StringCalculator {
             return 0;
         }
         if (input.contains(",")){
-            return sumTwoNumbers(input);
+            return sumCommaSeparatedNumbers(input);
         }
         return parseSingleNumber(input);
     }
@@ -15,10 +15,12 @@ public class StringCalculator {
         return Integer.parseInt(input.trim());
     }
 
-    private static int sumTwoNumbers(String input){
+    private static int sumCommaSeparatedNumbers(String input){
         String[] parts = input.split(",");
-        int num1 = parseSingleNumber(parts[0]);
-        int num2 = parseSingleNumber(parts[1]);
-        return num1 + num2;
+        int sum = 0;
+        for (String part : parts) {
+            sum += Integer.parseInt(part.trim());
+        }
+        return sum;
     }
 }
