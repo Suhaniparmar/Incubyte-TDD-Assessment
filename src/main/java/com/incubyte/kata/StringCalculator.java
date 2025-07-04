@@ -1,6 +1,9 @@
 package com.incubyte.kata;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringCalculator {
     public static int add(String input){
         if(input == null || input.trim().isEmpty()){
@@ -32,8 +35,18 @@ public class StringCalculator {
 
     private static int sum(String[] numbers){
         int total = 0;
+        List<String> negatives = new ArrayList<>();
+
         for (String number : numbers){
-            total += Integer.parseInt(number.trim());
+            int num = Integer.parseInt(number);
+            if(num < 0) {
+                negatives.add(number);
+            }
+            total += num;
+        }
+
+        if (!negatives.isEmpty()) {
+            throw new IllegalArgumentException("Negatives not allowed: " + String.join(", ", negatives));
         }
         return total;
     }
