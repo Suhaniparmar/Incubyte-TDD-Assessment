@@ -30,4 +30,9 @@ public class StringCalculatorTest {
         assertEquals(10, StringCalculator.add("2\n5,3"));
     }
 
+    @Test
+    public void supportCustomSingleCharacterDelimiter() {
+        assertEquals(3, StringCalculator.add("//;\n1;2"));
+    }
+
 }
