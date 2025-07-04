@@ -65,5 +65,10 @@ public class StringCalculatorTest {
         assertEquals(10, StringCalculator.add("//[<<]\n1<<2<<3<<4"));
     }
 
+    @Test
+    public void supportMultipleSingleCharacterDelimiters() {
+        assertEquals(6, StringCalculator.add("//[*][%]\n1*2%3"));
+    }
+
 
 }
