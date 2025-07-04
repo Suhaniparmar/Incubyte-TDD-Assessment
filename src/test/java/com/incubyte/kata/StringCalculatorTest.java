@@ -19,4 +19,10 @@ public class StringCalculatorTest {
     public void returnSumForTwoCommaSeparatedNumbers(){
         assertEquals(5, StringCalculator.add("2,3"));
     }
+
+    @Test
+    public void returnSumForMultipleCommaSeparatedNumbers(){
+        assertEquals(22, StringCalculator.add("1,5,7,9"));
+    }
+
 }
