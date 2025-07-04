@@ -33,6 +33,7 @@ public class StringCalculatorTest {
     @Test
     public void supportCustomSingleCharacterDelimiter() {
         assertEquals(3, StringCalculator.add("//;\n1;2"));
+        assertEquals(3, StringCalculator.add("//#\n1#2"));
     }
 
 }
