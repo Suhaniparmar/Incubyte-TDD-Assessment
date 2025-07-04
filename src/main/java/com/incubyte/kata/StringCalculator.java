@@ -23,21 +23,33 @@ public class StringCalculator {
         return input.startsWith("//");
     }
 
-    private static String[] extractNumbersWithCustomDelimiter(String input){
+    private static String[] extractNumbersWithCustomDelimiter(String input) {
         String[] parts = input.split("\n", 2);
         String delimiterPart = parts[0].substring(2);
+        String numbersPart = parts[1];
 
-        String delimiter;
+        String delimiterRegex;
+
         if (delimiterPart.startsWith("[") && delimiterPart.endsWith("]")) {
-            delimiter = delimiterPart.substring(1, delimiterPart.length() - 1);
-            delimiter = Pattern.quote(delimiter);  // to avoid regex char, consider as a string literal
+            List<String> delimiters = new ArrayList<>();
+            int i = 0;
+            while (i < delimiterPart.length()) {
+                int start = delimiterPart.indexOf("[", i);
+                int end = delimiterPart.indexOf("]", start);
+                if (start == -1 || end == -1) break;
+                String delim = delimiterPart.substring(start + 1, end);
+                delimiters.add(Pattern.quote(delim));
+                i = end + 1;
+            }
+
+            delimiterRegex = String.join("|", delimiters);
         } else {
-            delimiter = Pattern.quote(delimiterPart);
+            delimiterRegex = Pattern.quote(delimiterPart);
         }
 
-        String numbersPart = parts[1];
-        return numbersPart.split(delimiter);
+        return numbersPart.split(delimiterRegex);
     }
+
 
     private static String[] splitByDefaultDelimiters(String input){
         return input.trim().split("[,\n]");
