@@ -5,23 +5,19 @@ public class StringCalculator {
         if (input == null || input.trim().isEmpty()){
             return 0;
         }
-        input = input.replace("\n", ",");
-        if (input.contains(",")){
-            return sumCommaSeparatedNumbers(input);
-        }
-        return parseSingleNumber(input);
+        String[] numbers = splitByDefaultDelimiters(input);
+        return sum(numbers);
     }
 
-    private static int parseSingleNumber(String input){
-        return Integer.parseInt(input.trim());
+    private static String[] splitByDefaultDelimiters(String input){
+        return input.trim().split("[,\n]");
     }
 
-    private static int sumCommaSeparatedNumbers(String input){
-        String[] parts = input.split(",");
-        int sum = 0;
-        for (String part : parts) {
-            sum += Integer.parseInt(part.trim());
+    private static int sum(String[] numbers){
+        int total = 0;
+        for (String number : numbers){
+            total += Integer.parseInt(number);
         }
-        return sum;
+        return total;
     }
 }
