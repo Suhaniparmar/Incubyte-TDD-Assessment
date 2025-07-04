@@ -5,6 +5,7 @@ public class StringCalculator {
         if (input == null || input.trim().isEmpty()){
             return 0;
         }
+        input = input.replace("\n", ",");
         if (input.contains(",")){
             return sumCommaSeparatedNumbers(input);
         }
