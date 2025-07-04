@@ -25,4 +25,9 @@ public class StringCalculatorTest {
         assertEquals(22, StringCalculator.add("1,5,7,9"));
     }
 
+    @Test
+    public void handleNewlineAsValidDelimiter() {
+        assertEquals(10, StringCalculator.add("2\n5,3"));
+    }
+
 }
