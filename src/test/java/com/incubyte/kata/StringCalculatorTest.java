@@ -54,5 +54,10 @@ public class StringCalculatorTest {
         assertEquals("Negatives not allowed: -7, -4", ex.getMessage());
     }
 
+    @Test
+    public void ignoreNumbersGreaterThanThousand() {
+        assertEquals(8, StringCalculator.add("2,1001,6"));
+    }
+
 
 }
