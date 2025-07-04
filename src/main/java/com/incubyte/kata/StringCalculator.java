@@ -3,6 +3,7 @@ package com.incubyte.kata;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
     public static int add(String input){
@@ -24,7 +25,16 @@ public class StringCalculator {
 
     private static String[] extractNumbersWithCustomDelimiter(String input){
         String[] parts = input.split("\n", 2);
-        String delimiter = parts[0].substring(2); // extract custom delimiter
+        String delimiterPart = parts[0].substring(2);
+
+        String delimiter;
+        if (delimiterPart.startsWith("[") && delimiterPart.endsWith("]")) {
+            delimiter = delimiterPart.substring(1, delimiterPart.length() - 1);
+            delimiter = Pattern.quote(delimiter);  // to avoid regex char, consider as a string literal
+        } else {
+            delimiter = Pattern.quote(delimiterPart);
+        }
+
         String numbersPart = parts[1];
         return numbersPart.split(delimiter);
     }

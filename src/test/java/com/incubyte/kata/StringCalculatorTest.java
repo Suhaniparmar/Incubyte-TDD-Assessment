@@ -62,6 +62,7 @@ public class StringCalculatorTest {
     @Test
     public void supportMultiCharacterDelimiter() {
         assertEquals(6, StringCalculator.add("//[***]\n1***2***3"));
+        assertEquals(10, StringCalculator.add("//[<<]\n1<<2<<3<<4"));
     }
 
 
