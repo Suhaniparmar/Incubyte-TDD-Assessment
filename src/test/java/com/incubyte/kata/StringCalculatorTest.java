@@ -33,7 +33,16 @@ public class StringCalculatorTest {
     @Test
     public void supportCustomSingleCharacterDelimiter() {
         assertEquals(3, StringCalculator.add("//;\n1;2"));
-        assertEquals(3, StringCalculator.add("//#\n1#2"));
+        assertEquals(10, StringCalculator.add("//#\n1#2#3#4"));
+    }
+
+    @Test
+    public void throwExceptionForNegativeNumber() {
+        IllegalArgumentException ex = assertThrows(
+                IllegalArgumentException.class,
+                () -> StringCalculator.add("1002,-4")
+        );
+        assertEquals("Negatives not allowed: -4", ex.getMessage());
     }
 
 }

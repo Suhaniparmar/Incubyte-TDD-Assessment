@@ -1,6 +1,5 @@
 package com.incubyte.kata;
 
-import java.util.regex.Pattern;
 
 public class StringCalculator {
     public static int add(String input){
@@ -24,7 +23,7 @@ public class StringCalculator {
         String[] parts = input.split("\n", 2);
         String delimiter = parts[0].substring(2); // extract custom delimiter
         String numbersPart = parts[1];
-        return numbersPart.split(Pattern.quote(delimiter));
+        return numbersPart.split(delimiter);
     }
 
     private static String[] splitByDefaultDelimiters(String input){
@@ -34,7 +33,7 @@ public class StringCalculator {
     private static int sum(String[] numbers){
         int total = 0;
         for (String number : numbers){
-            total += Integer.parseInt(number);
+            total += Integer.parseInt(number.trim());
         }
         return total;
     }
